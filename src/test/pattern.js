@@ -102,14 +102,19 @@ var abstractFactoryPattern;
     productB1.doSomething();
     productB2.doSomething();
 })(abstractFactoryPattern || (abstractFactoryPattern = {}));
-var Singleton = /** @class */ (function () {
-    function Singleton() {
-    }
-    Singleton.getInstance = function () {
-        if (!Singleton.instance) {
-            Singleton.instance = new Singleton();
+var SingletonPattern;
+(function (SingletonPattern) {
+    var Singleton = /** @class */ (function () {
+        function Singleton() {
         }
-        return Singleton.instance;
-    };
-    return Singleton;
-}());
+        Singleton.getInstance = function () {
+            if (!Singleton.instance) {
+                Singleton.instance = new Singleton();
+            }
+            return Singleton.instance;
+        };
+        return Singleton;
+    }());
+    var s1 = Singleton.getInstance(), s2 = Singleton.getInstance();
+    console.log(s1 === s2);
+})(SingletonPattern || (SingletonPattern = {}));
