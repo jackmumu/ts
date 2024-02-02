@@ -126,7 +126,7 @@ var abstractFactoryPattern;
     productB2.doSomething();
 })(abstractFactoryPattern || (abstractFactoryPattern = {}));
 /**
- * 单例模式
+ * 单例模式 提供一个实体类的静态方法返回一个静态实例
  */
 var SingletonPattern;
 (function (SingletonPattern) {

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #app{
+            width: 1000px;
+            height: 1000px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <span id="s">                  </span>
+    </div>
+    <script>
+        const directory = './';
+        let i = 0;
+        fetch(directory).then(
+            res => res.text()
+        ).then(async text => {
+            const regex = /href="(.*\.js)"/g;
+            let match;
+            while (match = regex.exec(text)) {
+                const path = match[1];
+                const p = new Promise((res) => {
+                    const script = document.createElement('script');
+                    script.defer = true;
+                    script.src = directory + path;
+
+                    // 将 script 元素添加到 body 元素的底部
+                    document.body.appendChild(script);
+                    console.log(`js -------- ${i++} -------- ${path.split('/').pop()}`)
+                    setTimeout(() => {
+                        res()
+                    }, 100)
+                })
+                await p
+                // 创建一个新的 script 元素2
+            }
+        })
+    </script>
+
+</body>
+
+</html>
