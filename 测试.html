@@ -1,11 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+    <script async src="https://maps.googleapis.com/maps/api/js?key=your_api_key_here&callback=initMap"></script>
+    <script>
+        function initMap() {
+            var location = { lat: -33.866, lng: 151.196 };
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: location
+            });
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+        }
+    </script>
+    <div id="map" style="height: 400px; width: 100%;"></div>
 </body>
+
 </html>
